@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -16,6 +16,31 @@
   <li>
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
-</ul>
+</ul> -->
 
-<router-outlet></router-outlet>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">Daily Deals</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a routerLink="/deals" routerLinkActive="active">Public Deals</a>
+            </li>
+            <li>
+                <a routerLink="/special" *ngIf="authService.authenticated" routerLinkActive="active">Private Deals</a>
+            </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a *ngIf="!authService.authenticated" (click)="authService.login()">Log In</a>
+            </li>
+            <li>
+                <a (click)="authService.logout()" *ngIf="authService.authenticated">Log Out</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="col-sm-12">
+        <router-outlet></router-outlet>
+    </div>
+</div>

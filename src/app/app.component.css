@@ -1,0 +1,9 @@
+.navbar-right { margin-right: 0px !important }
+
+.active {
+    font-weight: bold;
+}
+
+.navbar a {
+    cursor: pointer;
+}
